@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const output = document.getElementById('output');
     const blog = document.getElementById('blog');
     const experience = document.getElementById('experience');
+    const personal = document.getElementById('personal');
+    const folderIcons = document.querySelectorAll('.folder');
 
     let inputBuffer = '';
 
@@ -23,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function processCommand(command) {
         output.innerHTML = '';
-        blog.classList.add('hidden');
-        experience.classList.add('hidden');
+        hideAllSections();
 
         switch (command.toLowerCase()) {
             case 'blog':
@@ -33,10 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'experience':
                 experience.classList.remove('hidden');
                 break;
+            case 'personal':
+                personal.classList.remove('hidden');
+                break;
             default:
                 output.innerHTML = `Command not found: ${command}`;
         }
     }
+
+    function hideAllSections() {
+        blog.classList.add('hidden');
+        experience.classList.add('hidden');
+        personal.classList.add('hidden');
+    }
+
+    // Folder icon click handlers
+    folderIcons.forEach(folder => {
+        folder.addEventListener('click', () => {
+            const target = folder.getAttribute('data-target');
+            processCommand(target);
+        });
+    });
 
     // Cursor blinking effect
     setInterval(() => {

@@ -10,6 +10,9 @@ body {
 #terminal {
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 #header h1 {
@@ -18,10 +21,33 @@ body {
     padding-bottom: 10px;
 }
 
+#folder-icons {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.folder {
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+}
+
+.folder:hover {
+    text-decoration: underline;
+}
+
+#content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
 #command-line {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #33ff33;
+    padding-top: 10px;
 }
 
 .prompt {
